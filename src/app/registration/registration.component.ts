@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   timeThree = false;
   pricePerPerson = 0;
   totalPrice = 0;
+  referenceNumber = ""
 
   getSelectedAirline(el: string) {
     this.airlineSelected = true
@@ -49,10 +50,11 @@ export class RegistrationComponent implements OnInit {
   }
   constructor(private service: RegistrationService) { }
 
-  registrationModel = new Registration('', '', '', '', '', '', '', '', '', new Date, '', '', 0, 0, new Payment('', '', 0));
+  registrationModel = new Registration('', '', '', '', '', '', '', '', '', new Date, '', '', 0, 0, new Payment('', '', 0), '');
 
 
   ngOnInit(): void {
+    this.getReferenceNumber();
   }
 
   createRegistration(): void {
@@ -60,5 +62,17 @@ export class RegistrationComponent implements OnInit {
       alert('registration successful')
     );
   }
+
+  getReferenceNumber(): void {
+    this.service.getReferenceNumber().subscribe((response: any) => {
+      this.referenceNumber = response.referenceNumber;
+      this.registrationModel.referenceNumber = response.referenceNumber;
+    },
+      error => {
+        console.log(error)
+      },
+    )
+  }
+
 
 }

@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-8 d-inline-block">
                     <input type="text" class="form-control" id="address" [(ngModel)]="registrationModel.address"
-                        name="address">
+                        name="address" value="referenceNumber">
                 </div>
             </div>
             <div class="col-md-4">
@@ -71,6 +71,15 @@
                 <div class="col-md-8 d-inline-block">
                     <input type="text" class="form-control" id="email" [(ngModel)]="registrationModel.email"
                         name="email">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="phone">Reference Number</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="referenceNumber"
+                        [(ngModel)]="registrationModel.referenceNumber" name="referenceNumber" disabled>
                 </div>
             </div>
         </div>
@@ -217,6 +226,7 @@
             <div class="col-md-12">
                 <div class="col-md-6 d-inline-block">
                 </div>
+
                 <div class="col-md-4 d-inline-block">
                     <button type="submit" (click)="createRegistration()" class="btn btn-primary float-right"> Reserve
                     </button>

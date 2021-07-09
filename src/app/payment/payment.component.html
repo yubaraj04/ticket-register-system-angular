@@ -13,7 +13,8 @@
                 </div>
                 <div class="col-md-6 d-inline-block">
                     <input type="text" class="form-control" id="reserveReferenceNumber"
-                        [(ngModel)]="paymentModel.reserveReferenceNumber" name="reserveReferenceNumber">
+                        [(ngModel)]="paymentModel.referenceNumber" name="referenceNumber"
+                        (change)="searchRegistrationByReferenceNumber()">
                 </div>
             </div>
         </div>
@@ -57,7 +58,8 @@
                 <div class="col-md-5 d-inline-block">
                 </div>
                 <div class="col-md-4 d-inline-block">
-                    <button type="submit" (click)="makePayment()" class="btn btn-primary float-right"> Pay
+                    <button type="submit" (click)="makePayment()" class="btn btn-primary float-right"
+                        [disabled]="!registrationFound"> Pay
                     </button>
                 </div>
             </div>

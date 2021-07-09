@@ -14,4 +14,12 @@ export class RegistrationService {
   public createRegistration(registrationModel: any) {
     return this.http.post<Registration>(this.resourceUrl, registrationModel);
   }
+
+  public searchByReferenceNumber(referenceNumber: string) {
+    return this.http.get<any>(this.baseUrl + "ticketRegisteration/findByReferenceNumber/" + referenceNumber);
+  }
+
+  public getReferenceNumber() {
+    return this.http.get<any>(this.baseUrl + "ticketRegisteration/generateReferenceNumber");
+  }
 }

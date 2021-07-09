@@ -16,7 +16,8 @@ export class Registration {
         public departureTime: string,
         public numberOfPassenger: number,
         public totalAmount: number,
-        public payment: Payment
+        public payment: Payment,
+        public referenceNumber: string
     ) {
 
     }
