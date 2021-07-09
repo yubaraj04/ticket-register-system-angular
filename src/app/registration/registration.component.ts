@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
+import { Payment } from '../payment/payment.model';
 import { Registration } from './registration.model';
 import { RegistrationService } from './registration.service';
 
@@ -48,7 +49,7 @@ export class RegistrationComponent implements OnInit {
   }
   constructor(private service: RegistrationService) { }
 
-  registrationModel = new Registration('', '', '', '', '', '', '', '', '', new Date, '', '', 0, 0);
+  registrationModel = new Registration('', '', '', '', '', '', '', '', '', new Date, '', '', 0, 0, new Payment('', '', 0));
 
 
   ngOnInit(): void {

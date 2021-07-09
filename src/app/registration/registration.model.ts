@@ -1,3 +1,5 @@
+import { Payment } from "../payment/payment.model";
+
 export class Registration {
     constructor(
         public firstName: string,
@@ -14,6 +16,7 @@ export class Registration {
         public departureTime: string,
         public numberOfPassenger: number,
         public totalAmount: number,
+        public payment: Payment
     ) {
 
     }
