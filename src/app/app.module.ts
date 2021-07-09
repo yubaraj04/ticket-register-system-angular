@@ -11,13 +11,23 @@ import { RegistrationModule } from './registration/registration.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule } from '@angular/forms';
 import { PaymentModule } from './payment/payment.module';
+import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginModule } from './login/login.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { LoginService } from './login/login.service';
+import { AuthGuard } from './atuhguard/auth.guard';
+import { AuthInterceptor } from './atuhguard/auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     PaymentComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,9 +36,12 @@ import { PaymentModule } from './payment/payment.module';
     RegistrationModule,
     PaymentModule,
     MatToolbarModule,
-    FormsModule
+    MatButtonModule,
+    FormsModule,
+    LoginModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService, AuthGuard, [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
