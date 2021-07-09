@@ -1,0 +1,37 @@
+.example-form {
+    min-width: 150px;
+    max-width: 250px;
+    width: 33%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .body {
+    font-size: small;
+  }
+  
+  #formHeader {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 2%;
+  }
+
+  .row {
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-right: 8px;
+    margin-left: 1%;
+  }
+
+  .main_div {
+  } 
+  .informationHeading{
+    text-align: center;
+    color:blue;
+  }
+
+  .checkboxStyle{
+    justify-content: space-between;
+  }

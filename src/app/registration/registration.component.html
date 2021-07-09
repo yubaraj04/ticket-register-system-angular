@@ -1,0 +1,227 @@
+<div class="container-fluid ">
+    <div class="heading">
+        <p id="formHeader">Flight Reservation Form</p>
+    </div>
+
+    <hr />
+
+    <form class="custom-back" #registrationForm="ngForm" autocomplete="off">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="firstName" [(ngModel)]="registrationModel.firstName"
+                        name="firstName">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="middleName">Middle Name</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="middleName" [(ngModel)]="registrationModel.middleName"
+                        name="middleName">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="lastName" [(ngModel)]="registrationModel.lastName"
+                        name="lastName">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="address">Address</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="address" [(ngModel)]="registrationModel.address"
+                        name="address">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="age">Age</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="age" [(ngModel)]="registrationModel.age" name="age">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="phone">Phone Number</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="phone" [(ngModel)]="registrationModel.phone"
+                        name="phone">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-3 d-inline-block">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <input type="text" class="form-control" id="email" [(ngModel)]="registrationModel.email"
+                        name="email">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 ">
+                <div>
+                    <p class="informationHeading">Reservation Details</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-2 d-inline-block">
+                    <label for="destinationFrom">From</label>
+                </div>
+                <div class="col-md-10 d-inline-block">
+                    <select class="form-select" id="destinationFrom" name="destinationFrom"
+                        [(ngModel)]="registrationModel.destinationFrom" required #selectBox>
+                        <option value="Kathmandu">
+                            Kathmandu
+                        </option>
+                        <option value="Pokhara">
+                            Pokhara
+                        </option>
+                        <option value="Biratnagar">
+                            Biratnagar
+                        </option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-2 d-inline-block">
+                    <label for="destinationTo">To</label>
+                </div>
+                <div class="col-md-10 d-inline-block">
+                    <select class="form-select" id="destinationTo" name="destinationTo"
+                        [(ngModel)]="registrationModel.destinationTo" required #selectBox>
+                        <option value="Kathmandu">
+                            Kathmandu
+                        </option>
+                        <option value="Pokhara">
+                            Pokhara
+                        </option>
+                        <option value="Biratnagar">
+                            Biratnagar
+                        </option>
+
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-2 d-inline-block">
+                    <label for="airline">Select an Airline</label>
+                </div>
+                <div class="col-md-10 d-inline-block">
+                    <select class="form-select" id="airline" name="airline" [(ngModel)]="registrationModel.airline"
+                        required #selectBox (change)="getSelectedAirline(selectBox.value)">
+                        <option value="Buddha Air">
+                            Buddha Air
+                        </option>
+                        <option value="Saurya Airlines">
+                            Saurya Airlines
+                        </option>
+                        <option value="Nepal Airlines">
+                            Nepal Airlines
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-2 d-inline-block">
+                    <label for="flightDate">Date</label>
+                </div>
+                <div class="col-md-10 d-inline-block">
+                    <input type="date" class="form-control" id="flightDate" [(ngModel)]="registrationModel.flightDate"
+                        name="flightDate">
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="airlineSelected == true">
+            <div class="col-md-6 d-inline-block">
+                <div class="col-md-2 d-inline-block">
+                    <label for="airline">Departure Time</label>
+                </div>
+                <div class="col-md-6 d-inline-block form-check">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="9:15" #one
+                            (change)="getChangedTime(one.value)" [checked]="timeOne">
+                        <label class="form-check-label" for="inlineCheckbox1">9:15</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="1:30" #two
+                            (change)="getChangedTime(two.value)" [checked]="timeTwo">
+                        <label class="form-check-label" for="inlineCheckbox2">1:30</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="4:45" #three
+                            (change)="getChangedTime(three.value)" [checked]="timeThree">
+                        <label class="form-check-label" for="inlineCheckbox3">4:45</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-2 d-inline-block">
+                    <label for="flightDate">Price per Person</label>
+                </div>
+                <div class="col-md-10 d-inline-block">
+                    <input type="text" class="form-control" id="pricePerPerson" [value]="pricePerPerson"
+                        name="pricePerPerson">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="col-md-2 d-inline-block">
+                    <label for="airline">Number of Seats</label>
+                </div>
+                <div class="col-md-10 d-inline-block">
+                    <input type="number" class="form-control" id="numberOfPassenger"
+                        [(ngModel)]="registrationModel.numberOfPassenger" name="numberOfPassenger" #seats
+                        (keyup)="onChangeNumberOfPassengers()">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-2 d-inline-block">
+                    <label for="totalPrice">Total Amount</label>
+                </div>
+                <div class="col-md-10 d-inline-block">
+                    <input type="totalAmount" class="form-control" id="totalAmount"
+                        [(ngModel)]="registrationModel.totalAmount" name="totalAmount">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6 d-inline-block">
+                </div>
+                <div class="col-md-4 d-inline-block">
+                    <button type="submit" class="btn btn-primary float-right"> Reserve
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

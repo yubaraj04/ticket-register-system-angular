@@ -1,0 +1,56 @@
+<div class="container-fluid ">
+    <div class="heading">
+        <p id="formHeader">Payment Form</p>
+    </div>
+
+    <hr />
+
+    <form class="custom-back" #paymentForm="ngForm" autocomplete="off">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2 d-inline-block">
+                    <label for="firstName"> Reserve Reference Number</label>
+                </div>
+                <div class="col-md-6 d-inline-block">
+                    <input type="text" class="form-control" id="reserveReferenceNumber"
+                        [(ngModel)]="paymentModel.reserveReferenceNumber" name="reserveReferenceNumber">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2 d-inline-block">
+                    <label for="paymentMode">Payment Mode</label>
+                </div>
+                <div class="col-md-6 d-inline-block">
+                    <input type="text" class="form-control" id="paymentMode" [(ngModel)]="paymentModel.paymentMode"
+                        name="paymentMode">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="col-md-2 d-inline-block">
+                    <label for="paidAmount">Paid Amount</label>
+                </div>
+                <div class="col-md-6 d-inline-block">
+                    <input type="text" class="form-control" id="paidAmount" [(ngModel)]="paymentModel.paidAmount"
+                        name="paidAmount">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-5 d-inline-block">
+                </div>
+                <div class="col-md-4 d-inline-block">
+                    <button type="submit" class="btn btn-primary float-right"> Pay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
