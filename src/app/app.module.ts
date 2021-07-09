@@ -41,7 +41,7 @@ import { AuthInterceptor } from './atuhguard/auth.interceptor';
     LoginModule,
     HttpClientModule
   ],
-  providers: [LoginService, AuthGuard, [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }]],
+  providers: [LoginService, AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

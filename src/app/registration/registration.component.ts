@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { Registration } from './registration.model';
+import { RegistrationService } from './registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -47,12 +48,19 @@ export class RegistrationComponent implements OnInit {
     this.registrationModel.totalAmount = this.registrationModel.numberOfPassenger * this.pricePerPerson;
     // alert(this.registrationModel.numberOfPassenger * this.pricePerPerson)
   }
-  constructor() { }
+  constructor(private service: RegistrationService) { }
 
   registrationModel = new Registration('', '', '', '', '', '', '', '', '', new Date, '', '', 0, 0);
 
 
   ngOnInit(): void {
+  }
+
+  createRegistration(): void {
+    this.service.createRegistration(this.registrationModel).subscribe(data =>
+      alert('registration successful')
+    );
+    //this.resetValues();
   }
 
 }
