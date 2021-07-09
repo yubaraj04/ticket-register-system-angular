@@ -44,9 +44,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onChangeNumberOfPassengers() {
-    //  this.registrationModel.numberOfPassenger = el;
     this.registrationModel.totalAmount = this.registrationModel.numberOfPassenger * this.pricePerPerson;
-    // alert(this.registrationModel.numberOfPassenger * this.pricePerPerson)
   }
   constructor(private service: RegistrationService) { }
 
@@ -60,7 +58,6 @@ export class RegistrationComponent implements OnInit {
     this.service.createRegistration(this.registrationModel).subscribe(data =>
       alert('registration successful')
     );
-    //this.resetValues();
   }
 
 }
