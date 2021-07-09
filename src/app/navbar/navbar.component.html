@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-    <span>Ticket Registration System</span>
+    <span *ngIf="loggedin" routerLink="/dashboard" routerLinkActive="active">Ticket Registration System</span>
     <div class="spacer"> </div>
-    <a mat-button color="#d50000" *ngIf="loggedin" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a mat-button *ngIf="loggedin" routerLink="/flight-registration" routerLinkActive="active">Flight Registration</a>
-    <a mat-button *ngIf="loggedin" routerLink="/payment" routerLinkActive="active">Payment</a>
+    <a mat-button class="mat-button" *ngIf="loggedin" routerLink="/dashboard">Dashboard</a>
+    <a mat-button *ngIf="loggedin" routerLink="/flight-registration">Flight Registration</a>
+    <a mat-button *ngIf="loggedin" routerLink="/payment">Payment</a>
     <a mat-button mat-raised-button *ngIf="!loggedin" routerLink="/login" color="accent">Login</a>
     <a mat-button mat-raised-button *ngIf="loggedin" (click)="logout()" color="accent">Logout</a>
 </mat-toolbar>

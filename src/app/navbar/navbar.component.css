@@ -2,6 +2,8 @@
     flex:1 1 auto;
 }
 
-button.mat-button:hover {
-    text-color: 'black';
-  }
+a:hover
+{   
+  text-decoration: none;
+  color: white;
+}
