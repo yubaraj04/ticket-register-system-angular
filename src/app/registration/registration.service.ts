@@ -26,4 +26,8 @@ export class RegistrationService {
   public getWeeklyRegistrationData() {
     return this.http.get<any>(this.baseUrl + "ticketRegisteration/getTotalRegistrationData");
   }
+
+  public getReceivedVsPending() {
+    return this.http.get<any>(this.baseUrl + "ticketRegisteration/getReceivedVsPending");
+  }
 }

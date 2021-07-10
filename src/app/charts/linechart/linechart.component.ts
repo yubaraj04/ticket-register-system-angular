@@ -13,9 +13,9 @@ import { RegistrationService } from 'src/app/registration/registration.service';
 })
 export class LinechartComponent implements OnInit {
 
-  public title = 'Line Chart';
-  public data = [{ date: new Date('2010-01-01'), value: 30 }, { date: new Date('2010-01-01'), value: 10 }];
+  public title = 'Line Chart representating total number of reserved tickets for last 7 days';
 
+  public data: any[] = [];
   private margin = { top: 20, right: 20, bottom: 30, left: 50 };
   private width: number;
   private height: number;
@@ -25,21 +25,28 @@ export class LinechartComponent implements OnInit {
   private line: any;
 
   constructor(private registrationService: RegistrationService) {
-    this.width = 960 - this.margin.left - this.margin.right;
-    this.height = 500 - this.margin.top - this.margin.bottom;
+    this.width = 500 - this.margin.left - this.margin.right;
+    this.height = 300 - this.margin.top - this.margin.bottom;
   }
 
   ngOnInit() {
     this.getData();
-    this.buildSvg();
-    this.addXandYAxis();
-    this.drawLineAndPath();
   }
 
-  async getData() {
-    await this.registrationService.getWeeklyRegistrationData().subscribe(response => {
-      this.data = response;
+  getData() {
+    this.registrationService.getWeeklyRegistrationData().subscribe(response => {
+      response.map((el: any) => {
+        let obj = {
+          date: d3.timeParse("%Y-%m-%d")(el.date),
+          value: el.value
+        }
+        this.data.push(obj);
+      })
+      this.buildSvg();
+      this.addXandYAxis();
+      this.drawLineAndPath();
     })
+
   }
 
   private buildSvg() {
@@ -68,7 +75,8 @@ export class LinechartComponent implements OnInit {
   private drawLineAndPath() {
     this.line = d3Shape.line()
       .x((d: any) => this.x(d.date))
-      .y((d: any) => this.y(d.value));
+      .y((d: any) => this.y(d.value))
+      .curve(d3.curveMonotoneX);
     // Configuring line path
     this.svg.append('path')
       .datum(this.data)

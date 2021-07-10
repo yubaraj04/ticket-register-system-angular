@@ -20,6 +20,7 @@ import { LoginService } from './login/login.service';
 import { AuthGuard } from './atuhguard/auth.guard';
 import { AuthInterceptor } from './atuhguard/auth.interceptor';
 import { LinechartComponent } from './charts/linechart/linechart.component';
+import { BargraphComponent } from './charts/bargraph/bargraph.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LinechartComponent } from './charts/linechart/linechart.component';
     LoginComponent,
     NavbarComponent,
     LinechartComponent,
+    BargraphComponent,
   ],
   imports: [
     BrowserModule,
