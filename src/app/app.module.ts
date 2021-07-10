@@ -19,6 +19,7 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { LoginService } from './login/login.service';
 import { AuthGuard } from './atuhguard/auth.guard';
 import { AuthInterceptor } from './atuhguard/auth.interceptor';
+import { LinechartComponent } from './charts/linechart/linechart.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AuthInterceptor } from './atuhguard/auth.interceptor';
     DashboardComponent,
     LoginComponent,
     NavbarComponent,
+    LinechartComponent,
   ],
   imports: [
     BrowserModule,

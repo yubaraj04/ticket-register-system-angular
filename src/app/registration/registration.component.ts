@@ -57,10 +57,44 @@ export class RegistrationComponent implements OnInit {
     this.getReferenceNumber();
   }
 
-  createRegistration(): void {
-    this.service.createRegistration(this.registrationModel).subscribe(data =>
-      alert('registration successful')
-    );
+  createRegistration(): any {
+    this.service.createRegistration(this.registrationModel).subscribe((response) => {
+      alert("Successfully Added");
+      this.resetForm();
+    }, error => {
+      if (error.status == 200) {
+        alert("Successfully Added");
+        this.resetForm();
+      }
+      else {
+        alert("Failed")
+      }
+    }
+    )
+  }
+
+  resetForm() {
+    this.registrationModel.firstName = "";
+    this.registrationModel.middleName = "";
+    this.registrationModel.lastName = "";
+    this.registrationModel.address = "";
+    this.registrationModel.age = "";
+    this.registrationModel.phone = "";
+    this.registrationModel.email = "";
+    this.registrationModel.destinationFrom = "";
+    this.registrationModel.destinationTo = "";
+    this.registrationModel.flightDate = new Date();
+    this.registrationModel.airline = "";
+    this.registrationModel.departureTime = "";
+    this.registrationModel.numberOfPassenger = 0;
+    this.registrationModel.totalAmount = 0;
+    this.registrationModel.payment = new Payment('', '', 0);
+    this.registrationModel.referenceNumber = '';
+    this.getReferenceNumber();
+    this.airlineSelected = false;
+    this.timeOne = false;
+    this.timeTwo = false;
+    this.timeThree = false;
   }
 
   getReferenceNumber(): void {

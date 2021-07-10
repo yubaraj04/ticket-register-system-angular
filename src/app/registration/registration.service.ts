@@ -11,8 +11,8 @@ export class RegistrationService {
   private resourceUrl = this.baseUrl + "ticketRegisteration/save";
   constructor(private http: HttpClient) { }
 
-  public createRegistration(registrationModel: any) {
-    return this.http.post<Registration>(this.resourceUrl, registrationModel);
+  public createRegistration(registrationModel: Registration) {
+    return this.http.post<any>(this.resourceUrl, registrationModel);
   }
 
   public searchByReferenceNumber(referenceNumber: string) {
@@ -21,5 +21,9 @@ export class RegistrationService {
 
   public getReferenceNumber() {
     return this.http.get<any>(this.baseUrl + "ticketRegisteration/generateReferenceNumber");
+  }
+
+  public getWeeklyRegistrationData() {
+    return this.http.get<any>(this.baseUrl + "ticketRegisteration/getTotalRegistrationData");
   }
 }

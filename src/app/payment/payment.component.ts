@@ -21,6 +21,15 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  resetForm() {
+    this.paymentModel.paidAmount = 0;
+    this.paymentModel.paymentMode = '';
+    this.paymentModel.referenceNumber = '';
+    this.registrationFound = false;
+    this.payableAmount = 0;
+    this.numberOfPassenger = 0;
+  }
+
   searchRegistrationByReferenceNumber() {
     this.registrationService.searchByReferenceNumber(this.paymentModel.referenceNumber).subscribe(response => {
       this.registrationFound = true;
@@ -29,8 +38,18 @@ export class PaymentComponent implements OnInit {
   }
 
   makePayment() {
-    this.service.makePayment(this.paymentModel).subscribe((response) =>
+    let response = "";
+    this.service.makePayment(this.paymentModel).subscribe((response) => {
       alert("Payment Made Successfully.")
+      this.resetForm();
+    }, error => {
+      if (error.status == 200) {
+        alert("Payment Made Successfully.")
+        this.resetForm();
+      } else {
+        alert(error.error)
+      }
+    }
 
     )
   }
